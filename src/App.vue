@@ -1,19 +1,40 @@
 <template>
-  <LineChart :chartData="lineData" :options="options" style="width:335px; height: 290px;" />
+  <div class="all">
+    <h1>CRYPTOCURRENCY RATE</h1>
 
 
-  <h2>CRYPTOCURRENCY RATE</h2>
+    <LineChart class="chart" :chartData="lineData" :options="options" />
 
 
-  <div v-for="people, index in peoples"><button @click="selected = peoples[index]">Поиск</button>{{ people }} <button
-      @click="peoples.splice(index, 1)">Удалить</button></div>
+    <div class="relevant">Data relevant to {{ time }}</div>
+    <div class="update" @click="getValue">
+      <img src="./images/update.png" width="39px">
+    </div>
 
 
 
-  <div class="darkWindow">
+    <div class="lightwindow">
+      <div v-for="people, index in peoples"><span class="buttSearch" @click="selected = peoples[index]"><img
+            src="./images/search.png" width="17px"></span> {{ people }} <span @click="peoples.splice(index, 1)"> <img
+            src="./images/bucket.png" width="15px" align="right"></span></div>
+    </div>
 
-    <input class="inp" v-model="inp">
-    <button class="butt" @click="addInput">+</button>
+    <div class="darkWindow">
+
+      <input class="inp" v-model="inp">
+      <button class="buttAdd" @click="addInput">+</button>
+    </div>
+
+
+
+
+
+<div class="made">
+  Made with <a style="color: #4fc08d">Vue.js</a> by <a href="https://github.com/Dexone">Dexone</a>.
+</div>
+
+
+
 
   </div>
 </template>
@@ -28,6 +49,7 @@ import { ref, watch, computed } from 'vue'
 import axios from 'axios'
 let selected = ref([])
 let inp = ref()
+let time = ref()
 function addInput() {
   peoples.value.push(inp.value)
   inp.value = ""
@@ -44,6 +66,8 @@ watch(selected, () => {
   getValue()
 })
 function getValue() {
+  let Data = new Date()
+  time.value = Data.toString().slice(16).slice(0, 8)
   axios.get(`https://api.coincap.io/v2/assets/${selected.value}/history?interval=h1`).then((res) => {
     dataLabels.value = [res.data.data[715].date.slice(11, 16), res.data.data[716].date.slice(11, 16), res.data.data[717].date.slice(11, 16), res.data.data[718].date.slice(11, 16), res.data.data[719].date.slice(11, 16)]
     dataValues.value = [res.data.data[715].priceUsd, res.data.data[716].priceUsd, res.data.data[717].priceUsd, res.data.data[718].priceUsd, res.data.data[719].priceUsd]

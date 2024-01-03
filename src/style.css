@@ -1,3 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+.all {
+  font-family: 'Quicksand', sans-serif;
+  width: 380px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333639;
+}
+
+.chart {
+  margin-left: auto;
+  margin-right: auto;
+  width: 335px;
+  height: 290px;
+}
+
+.relevant{
+  margin-top: 20px;
+  width: 190px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.update {
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40px;
+}
+
+
+.lightwindow {
+  border-color: #e0e0e6;
+  border-style: solid;
+  border-width: 1px 1px 0px 1px;
+  width: 270px;
+  padding: 15px;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.darkWindow {
+  border-color: #e0e0e6;
+  border-style: solid;
+  border-width: 1px;
+  width: 300px;
+  height: 60px;
+  background-color: #fafafc;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
 .inp {
   width: 233px;
   height: 30px;
@@ -9,7 +65,8 @@
   margin-top: 11px;
 }
 
-.butt {
+.buttAdd {
+  color: #a3a4a6;
   height: 34px;
   width: 35px;
   border-radius: 0px 20px 20px 0px;
@@ -19,14 +76,9 @@
   background-color: #fafafc;
 }
 
-.darkWindow {
-  border-color: #e0e0e6;
-  border-style: solid;
-  border-width: 1px;
-  width: 300px;
-  height: 60px;
-  background-color: #fafafc;
-
+.made{
+  margin-top: 20px;
+  width: 220px;
+  margin-left: auto;
+  margin-right: auto;
 }
-
-
