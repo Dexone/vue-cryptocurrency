@@ -9,7 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.3.11"
+    "axios": "^1.6.3",
+    "chart.js": "^3.9.1",
+    "vue": "^3.3.11",
+    "vue-chart-3": "^3.1.8"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.2",
