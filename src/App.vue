@@ -4,12 +4,18 @@
 
   <h2>CRYPTOCURRENCY RATE</h2>
 
-  <select v-model="selected">
-    <option v-for=" people in peoples">{{ people }}</option>
-  </select>
 
-  <input v-model="inp">
-  <button @click="addInput">Добавить</button>
+  <div v-for="people, index in peoples"><button @click="selected = peoples[index]">Поиск</button>{{ people }} <button
+      @click="peoples.splice(index, 1)">Удалить</button></div>
+
+
+
+  <div class="darkWindow">
+
+    <input class="inp" v-model="inp">
+    <button class="butt" @click="addInput">+</button>
+
+  </div>
 </template>
 
 
@@ -20,17 +26,19 @@ import Chart from 'chart.js/auto'
 import { LineChart } from "vue-chart-3"
 import { ref, watch, computed } from 'vue'
 import axios from 'axios'
-
+let selected = ref([])
 let inp = ref()
-function addInput(){
-peoples.value.push(inp.value)
+function addInput() {
+  peoples.value.push(inp.value)
+  inp.value = ""
+  console.log(selected)
 }
 
 
 
 
 const peoples = ref(['bitcoin', 'ethereum', 'litecoin'])
-let selected = ref()
+
 
 watch(selected, () => {
   getValue()
