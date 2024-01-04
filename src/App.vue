@@ -8,7 +8,7 @@
 
     <div class="relevant">Data relevant to {{ time }}</div>
     <div class="update" @click="getValue">
-      <img src="./images/update.png" width="39px">
+      <img src="./images/update.png" width="43px">
     </div>
 
 
@@ -24,9 +24,6 @@
       <input class="inp" v-model="inp">
       <button class="buttAdd" @click="addInput">+</button>
     </div>
-
-
-
 
 
 <div class="made">
@@ -45,22 +42,23 @@
 <script setup>
 import Chart from 'chart.js/auto'
 import { LineChart } from "vue-chart-3"
-import { ref, watch, computed } from 'vue'
+import { ref, watch, computed, onMounted } from 'vue'
 import axios from 'axios'
-let selected = ref([])
+import { useStorage } from '@vueuse/core'
+
+let selected = ref(["bitcoin"])
 let inp = ref()
 let time = ref()
 function addInput() {
   peoples.value.push(inp.value)
   inp.value = ""
-  console.log(selected)
 }
 
 
 
 
 const peoples = ref(['bitcoin', 'ethereum', 'litecoin'])
-
+const state = useStorage('vue-use-local-storage', peoples)
 
 watch(selected, () => {
   getValue()
@@ -91,6 +89,10 @@ const options = {
     legend: true
   }
 }
+
+onMounted(() => {
+  getValue()
+})
 </script>
 
 
