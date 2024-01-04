@@ -58,7 +58,7 @@ function addInput() {
 
 
 const peoples = ref(['bitcoin', 'ethereum', 'litecoin'])
-const state = useStorage('vue-use-local-storage', peoples)
+const state = useStorage('vue-use-local-storage-ctyptocurrency', peoples)
 
 watch(selected, () => {
   getValue()
